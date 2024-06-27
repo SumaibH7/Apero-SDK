@@ -1,0 +1,110 @@
+plugins {
+    id 'com.android.application'
+}
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 33
+    buildToolsVersion '33.0.0'
+
+
+    defaultConfig {
+        applicationId "com.apero.moduleads"
+        minSdkVersion 24
+        targetSdkVersion 33
+        versionCode 2
+        versionName "2.0"
+        def formattedDate = new Date().format('MMM.dd.yyyy')
+        archivesBaseName = "AperoModuleAds_v${versionName}(${versionCode})_${formattedDate}"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "default"
+    productFlavors {
+        appDev {
+            //use id test when dev
+            manifestPlaceholders = [ ad_app_id:"ca-app-pub-3940256099942544~3347511713"]
+            buildConfigField "String", "inter_splash", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "ads_open_app", "\"ca-app-pub-3940256099942544/9257395921\""
+            buildConfigField "String", "native_language", "\"ca-app-pub-3940256099942544/2247696110\""
+            buildConfigField "String", "interstitial", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "native_normal", "\"ca-app-pub-3940256099942544/2247696110\""
+            buildConfigField "String", "banner_normal", "\"ca-app-pub-3940256099942544/6300978111\""
+            buildConfigField "String", "banner_collapsible" , "\"ca-app-pub-3940256099942544/2014213617\""
+            buildConfigField "String", "reward", "\"ca-app-pub-3940256099942544/5224354917\""
+            buildConfigField "String", "interstitial_by_click", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "open_resume", "\"ca-app-pub-3940256099942544/9257395921\""
+
+            buildConfigField "String", "ads_inter_priority", "\"ca-app-pub-3940256099942544/8691691433\""
+            buildConfigField "String", "ads_inter_medium", "\"ca-app-pub-3940256099942544/8691691433\""
+            buildConfigField "String", "ad_interstitial", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "ad_native_priority", "\"ca-app-pub-3940256099942544/1044960115\""
+            buildConfigField "String", "ad_native_medium", "\"ca-app-pub-3940256099942544/1044960115\""
+            buildConfigField "String", "ad_native", "\"ca-app-pub-3940256099942544/1044960115\""
+            buildConfigField "Boolean", "env_dev", "true"
+
+        }
+        appProd {
+            //add your id ad here
+            manifestPlaceholders = [ ad_app_id:"ca-app-pub-3940256099942544~3347511713"]
+            buildConfigField "String", "inter_splash", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "ads_open_app", "\"ca-app-pub-3940256099942544/9257395921\""
+            buildConfigField "String", "native_language", "\"ca-app-pub-3940256099942544/2247696110\""
+            buildConfigField "String", "interstitial", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "native_normal", "\"ca-app-pub-3940256099942544/2247696110\""
+            buildConfigField "String", "banner_normal", "\"ca-app-pub-3940256099942544/6300978111\""
+            buildConfigField "String", "banner_collapsible" , "\"ca-app-pub-3940256099942544/2014213617\""
+            buildConfigField "String", "reward", "\"ca-app-pub-3940256099942544/5224354917\""
+            buildConfigField "String", "interstitial_by_click", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "open_resume", "\"ca-app-pub-3940256099942544/9257395921\""
+
+            buildConfigField "String", "ads_inter_priority", "\"ca-app-pub-3940256099942544/8691691433\""
+            buildConfigField "String", "ads_inter_medium", "\"ca-app-pub-3940256099942544/8691691433\""
+            buildConfigField "String", "ad_interstitial", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "ad_native_priority", "\"ca-app-pub-3940256099942544/1044960115\""
+            buildConfigField "String", "ad_native_medium", "\"ca-app-pub-3940256099942544/1044960115\""
+            buildConfigField "String", "ad_native", "\"ca-app-pub-3940256099942544/1044960115\""
+            buildConfigField "Boolean", "env_dev", "false"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
+
+    buildFeatures{
+        dataBinding = true
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.google.android.gms:play-services-ads:21.1.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.core:core-ktx:1.8.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
+    implementation 'androidx.work:work-runtime-ktx:2.7.0'
+
+    implementation 'com.applovin:applovin-sdk:11.4.2'
+
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    implementation 'apero-inhouse:apero-ads:7.0.1'
+
+    implementation platform('com.google.firebase:firebase-bom:30.3.1')
+    implementation 'com.google.firebase:firebase-config'
+}
+repositories {
+    mavenCentral()
+}

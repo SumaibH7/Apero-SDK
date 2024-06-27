@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FDA6A6"
+        tools:context=".activity.MainActivity">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/btnShowInterstitial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Show Interstitial" />
+
+            <Button
+                android:id="@+id/btnShowInterstitialByClick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Show Interstitial by count config" />
+
+            <Button
+                android:id="@+id/btnShowNative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Show Native" />
+
+            <Button
+                android:id="@+id/btnShowNativeAdapter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Show Native Adapter" />
+
+            <Button
+                android:id="@+id/btnShowBanner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Show Banner" />
+
+            <Button
+                android:id="@+id/btnShowReward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btForceShowAds"
+                android:layout_centerHorizontal="true"
+                android:text="Show Reward" />
+
+
+            <Button
+                android:id="@+id/btIap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnShowReward"
+                android:layout_centerHorizontal="true"
+                android:text="IAP test" />
+
+            <Button
+
+                android:id="@+id/btnAdjustEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btIap"
+                android:layout_centerHorizontal="true"
+                android:onClick="onTrackSimpleEventClick"
+                android:text="Event sample adjust" />
+
+            <Button
+                android:id="@+id/btnAdjustTrack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnAdjustEvent"
+                android:layout_centerHorizontal="true"
+                android:onClick="onTrackRevenueEventClick"
+                android:text="Track Revenue adjust" />
+
+            <Button
+                android:id="@+id/btnInterPreload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnAdjustTrack"
+                android:layout_centerHorizontal="true"
+                android:text="Show Preload Inter" />
+
+            <Button
+                android:id="@+id/btnNativePreload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnInterPreload"
+                android:layout_centerHorizontal="true"
+                android:text="Show Preload Native" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <FrameLayout
+            android:id="@+id/flAdsBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <include layout="@layout/layout_banner_control" />
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
